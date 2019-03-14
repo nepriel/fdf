@@ -6,13 +6,13 @@
 #    By: huszalew <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/29 12:20:25 by huszalew          #+#    #+#              #
-#    Updated: 2019/03/11 15:45:38 by vlhomme          ###   ########.fr        #
+#    Updated: 2019/03/13 12:17:39 by vlhomme          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME := fdf
 
-DEBUG = no
+DEBUG = yes
 
 SRC_PATH := ./
 OBJ_PATH := ./
@@ -27,7 +27,7 @@ ifeq ($(DEBUG),yes)
 	CFLAGS += -g
 endif
 
-SRC := main.c
+SRC := main.c check.c
 
 HDR := fillit.h
 
