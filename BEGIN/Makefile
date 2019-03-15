@@ -1,70 +1,62 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: huszalew <marvin@42.fr>                    +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2018/11/29 12:20:25 by huszalew          #+#    #+#              #
-#    Updated: 2019/03/13 12:17:39 by vlhomme          ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+NAME = fdf
 
-NAME := fdf
+SRC_PATH = ./srcs/
 
-DEBUG = yes
+OBJ_PATH = ./objs/
 
-SRC_PATH := ./
-OBJ_PATH := ./
-HDR_PATH := ./
-LIB_PATH := ./libft/
+CPPFLAGS = -I./includes/
 
-CC := gcc
-CFLAGS := -Wall -Wextra -Werror
-LFLAGS := -L$(LIB_PATH) -lft
+SRC_NAME =	main.c					\
+			ft_bresenhaim.c			\
+			parsing.c				\
+			alloc.c					\
+			check.c					\
 
-ifeq ($(DEBUG),yes)
-	CFLAGS += -g
-endif
+OBJ_NAME = $(SRC_NAME:.c=.o)
 
-SRC := main.c check.c
+SRC = $(addprefix $(SRC_PATH)/,$(SRC_NAME))
 
-HDR := fillit.h
+OBJ = $(addprefix $(OBJ_PATH), $(OBJ_NAME))
 
-LIB := libft.a
+LDFLAGS = -L./libft/
 
-OBJ := $(addprefix $(OBJ_PATH), $(SRC:.c=.o))
-SRC := $(addprefix $(SRC_PATH), $(SRC))
-HDR := $(addprefix $(HDR_PATH), $(HDR))
+LFT = -lft
 
-C_NO		=	"\033[00m"
-C_OK		=	"\033[36m"
-C_GOOD		=	"\033[32m"
+CC = gcc $(CFLAGS)
 
-SUCCESS		=	$(C_GOOD)SUCCESS$(C_NO)
-OK			=	$(C_OK)OK$(C_NO)
+CFLAGS = -Wall -Wextra -Werror #-ggdb -fsanitize=address -fno-omit-frame-pointer
+
+MLX = -lmlx -framework OpenGL -framework AppKit
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@$(MAKE) -C $(LIB_PATH)
-	@$(CC) $(CFLAGS) $(LFLAGS) -o $@ $^
-	@echo "Compile" [ $(NAME) ] $(SUCCESS)
+		@make -C./libft/
+		@echo "\033[34mCreation of $(NAME) ...\033[0m"
+		@$(CC) $(LDFLAGS) $(LFT) $(OBJ) -o $@ $(MLX)
+		@echo "\033[32m$(NAME) created\n\033[0m"
 
-$(OBJ_PATH)%.o: $(SRC_PATH)%.c $(HDR)
-	@$(CC) $(CFLAGS) -I$(HDR_PATH) -o $@ -c $<
+$(OBJ_PATH)%.o: $(SRC_PATH)%.c
+		@mkdir $(OBJ_PATH) 2> /dev/null || true
+		@$(CC) $(CPPFLAGS) -o $@ -c $<
 
 clean:
-	@$(MAKE) clean -C $(LIB_PATH)
-	@rm -f $(OBJ)
-	@echo "Clean" [ $(NAME) ] "..." $(OK)
+		@make clean -C ./libft/
+		@echo "\033[33mRemoval of .o files of $(NAME) ...\033[0m"
+		@rm -f $(OBJ)
+		@rmdir $(OBJ_PATH) 2> /dev/null || true
+		@echo "\033[31mFiles .o deleted\n\033[0m"
 
 fclean: clean
-	@rm -f $(LIB_PATH)$(LIB)
-	@echo "Delete" [ $(LIB) ] "..." $(OK)
-	@rm -f $(NAME)
-	@echo "Delete" [ $(NAME) ] "..." $(OK)
+		@make fclean -C ./libft/
+		@echo "\033[33mRemoval of $(NAME)...\033[0m"
+		@rm -f $(NAME)
+		@echo "\033[31mBinary $(NAME) deleted\n\033[0m"
 
 re: fclean all
 
-.PHONY: all clean fclean re
+norme:
+		norminette $(SRC)
+		norminette $(INC_PATH)*.h
+
+.PHONY: all, clean, fclean, re

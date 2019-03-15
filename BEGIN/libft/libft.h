@@ -6,13 +6,13 @@
 /*   By: vlhomme  <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 16:44:20 by vlhomme           #+#    #+#             */
-/*   Updated: 2019/03/13 22:24:33 by vlhomme          ###   ########.fr       */
+/*   Updated: 2019/03/15 16:21:23 by vlhomme          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
-# define BUFF_SIZE	42
+# define BUFF_SIZE	22
 # define ENDL		'\n'
 # include <string.h>
 # include <unistd.h>
