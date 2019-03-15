@@ -6,7 +6,7 @@
 /*   By: vlhomme <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/15 16:14:51 by vlhomme           #+#    #+#             */
-/*   Updated: 2019/03/15 16:42:20 by vlhomme          ###   ########.fr       */
+/*   Updated: 2019/03/15 17:16:37 by vlhomme          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int		**creat_tab(int count_lines)
 	return (board);
 }
 
-int		*put_eachvalue_intab(char **eachvalue, int *col, int *check)
+int		*put_eachvalue_intab(char **eachvalue, t_check *check)
 {
 	int *tab;
 	int i;
@@ -29,9 +29,9 @@ int		*put_eachvalue_intab(char **eachvalue, int *col, int *check)
 	i = 0;
 	while (eachvalue[i])
 		i++;
-	if (i != *col)
+	if (i != check->col)
 	{
-		*check = -1;
+		check->check = -1;
 		return (NULL);
 	}
 	if (!(tab = (int *)ft_memalloc(sizeof(*tab) * (i))))

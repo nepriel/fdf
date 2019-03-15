@@ -6,7 +6,7 @@
 /*   By: vlhomme <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/15 10:46:04 by vlhomme           #+#    #+#             */
-/*   Updated: 2019/03/15 19:43:01 by vlhomme          ###   ########.fr       */
+/*   Updated: 2019/03/15 19:04:06 by vlhomme          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,15 @@ void	fdf(t_mlx *mlx)
 	int coef2 = mlx->Hauteur / (mlx->col * 2);
 	int i;
 	int j;
-	t_point	point;
+	int x;
+	int y;
+	int z;
+	int x1;
+	int y1;
+	int z1;
+	int x2;
+	int y2;
+	int z2;
 
 	i = 0;
 	while(i < mlx->line)
@@ -40,32 +48,32 @@ void	fdf(t_mlx *mlx)
 		j = 0;
 		while(j < mlx->col)
 		{
-			point.y = (coef1 * i) + 125;
-			point.x = (coef2 * j) + 300;
-			point.z = (15 * mlx->board[i][j]);
-			iso(&point.x, &point.y, point.z);
+			y = (coef1 * i) + 125;
+			x = (coef2 * j) + 300;
+			z = (15 * mlx->board[i][j]);
+			iso(&x, &y, z);
 			if (i < (mlx->line - 1) && j < (mlx->col - 1))
 			{
-				point.y1 = (coef1 * (i + 1)) + 125;
-				point.x1 = (coef2 * j) + 300;
-				point.z1 = (15 * mlx->board[i + 1][j]);
-				iso(&point.x1, &point.y1, point.z1);
-				if (point.z == 0 && point.z1 == 0)
-					Line(mlx, point.x, point.y, point.x1, point.y1, 0x00ff00);
-				else if ( point.z == point.z1)
-					Line(mlx, point.x, point.y, point.x1, point.y1, 0x88ffff);
+				y1 = (coef1 * (i + 1)) + 125;
+				x1 = (coef2 * j) + 300;
+				z1 = (15 * mlx->board[i + 1][j]);
+				iso(&x1, &y1, z1);
+				if (z == 0 && z1 == 0)
+					Line(mlx->mlx_ptr, mlx->win_ptr, x, y, x1, y1, 0x00ff00);
+				else if ( z == z1)
+					Line(mlx->mlx_ptr, mlx->win_ptr, x, y, x1, y1, 0x88ffff);
 				else
-					Line(mlx, point.x, point.y, point.x1, point.y1, 0xff0000);
-				point.y2 = (coef1 * i) + 125;
-				point.x2 = (coef2 * (j + 1)) + 300;
-				point.z2 = (15 * mlx->board[i][j + 1]);
-				iso(&point.x2, &point.y2, point.z2);
-				if (point.z == 0 && point.z2 == 0)	
-					Line(mlx, point.x, point.y, point.x2, point.y2, 0x00ff00);
-				else if (point.z == point.z2)
-					Line(mlx, point.x, point.y, point.x2, point.y2, 0x88ffff);
+					Line(mlx->mlx_ptr, mlx->win_ptr, x, y, x1, y1, 0xff0000);
+				y2 = (coef1 * i) + 125;
+				x2 = (coef2 * (j + 1)) + 300;
+				z2 = (15 * mlx->board[i][j + 1]);
+				iso(&x2, &y2, z2);
+				if (z == 0 && z2 == 0)	
+					Line(mlx->mlx_ptr, mlx->win_ptr, x, y, x2, y2, 0x00ff00);
+				else if (z == z2)
+					Line(mlx->mlx_ptr, mlx->win_ptr, x, y, x2, y2, 0x88ffff);
 				else
-					Line(mlx, point.x, point.y, point.x2, point.y2, 0xffff00);
+					Line(mlx->mlx_ptr, mlx->win_ptr, x, y, x2, y2, 0xffff00);
 				//mlx_pixel_put(mlx_ptr, win_ptr, x1, y1, 0xffffff);
 			}
 			//mlx_pixel_put(mlx_ptr, win_ptr, x, y, 0xffffff);

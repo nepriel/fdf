@@ -6,7 +6,7 @@
 /*   By: vlhomme <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/15 16:16:26 by vlhomme           #+#    #+#             */
-/*   Updated: 2019/03/15 16:45:33 by vlhomme          ###   ########.fr       */
+/*   Updated: 2019/03/15 18:04:51 by vlhomme          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int		ft_count_lines(int fd, char **argv)
 
 int		countcol(char **eachvalue)
 {
-	int i;
+	int		i;
 
 	i = 0;
 	while (eachvalue[i])
@@ -38,7 +38,27 @@ int		countcol(char **eachvalue)
 	return (i);
 }
 
-int		**parsing(int fd, char **argv, int *count_lines, int *col, int *check)
+void	print_board_content(int **board, t_check *check)
+{
+	int k;
+	int l;
+
+	k = 0;
+	l = 0;
+	while (k < check->line)
+	{
+		l = 0;
+		while (l < check->col)
+		{
+			printf("%02d, ", board[k][l]);
+			l++;
+		}
+		printf("\n");
+		k++;
+	}
+}
+
+int		**parsing(int fd, char **argv, t_check *check)
 {
 	char	*line;
 	char	**eachvalue;
@@ -46,31 +66,20 @@ int		**parsing(int fd, char **argv, int *count_lines, int *col, int *check)
 	int		**board;
 
 	line = NULL;
-	*count_lines = ft_count_lines(fd, argv);
-	board = creat_tab(*count_lines);
+	check->line = ft_count_lines(fd, argv);
+	board = creat_tab(check->line);
 	j = 0;
 	while (get_next_line(fd, &line) == 1)
 	{
 		eachvalue = ft_strsplit(line, ' ');
 		if (j == 0)
-			*col = countcol(eachvalue);
-		board[j] = put_eachvalue_intab(eachvalue, col, check);
-		if (*check == -1)
+			check->col = countcol(eachvalue);
+		board[j] = put_eachvalue_intab(eachvalue, check);
+		if (check->check == -1)
 			return (NULL);
 		free(line);
 		j++;
 	}
-		int k = 0, l = 0;
-		while (k < *count_lines)
-		{
-		l = 0;
-		while (l < *col)
-		{
-		printf("%02d, ", board[k][l]);
-		l++;
-		}
-		printf("\n");
-		k++;
-		}
+	print_board_content(board, check);
 	return (board);
 }
