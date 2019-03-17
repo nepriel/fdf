@@ -6,7 +6,7 @@
 /*   By: vlhomme <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/15 10:46:04 by vlhomme           #+#    #+#             */
-/*   Updated: 2019/03/17 15:43:47 by vlhomme          ###   ########.fr       */
+/*   Updated: 2019/03/17 15:48:43 by vlhomme          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-
-void iso(int *x, int *y, int z)
+void	iso(int *x, int *y, int z)
 {
 	int previous_x;
 	int	previous_y;
@@ -28,17 +27,19 @@ void iso(int *x, int *y, int z)
 
 void	fdf(t_mlx *mlx)
 {
-	int coef1 = mlx->Largeur / (mlx->line * 2);
-	int coef2 = mlx->Hauteur / (mlx->col * 2);
-	int i;
-	int j;
+	int		coef1;
+	int		coef2;
+	int		i;
+	int		j;
 	t_point	point;
 
+	coef1 = mlx->Largeur / (mlx->line * 2);
+	coef2 = mlx->Hauteur / (mlx->col * 2);
 	i = 0;
-	while(i < mlx->line)
+	while (i < mlx->line)
 	{
 		j = 0;
-		while(j < mlx->col)
+		while (j < mlx->col)
 		{
 			point.y = (coef1 * i) + 125;
 			point.x = (coef2 * j) + 300;
@@ -52,7 +53,7 @@ void	fdf(t_mlx *mlx)
 				iso(&point.x1, &point.y1, point.z1);
 				if (point.z == 0 && point.z1 == 0)
 					line(mlx, &point, 0x00ff00);
-				else if ( point.z == point.z1)
+				else if (point.z == point.z1)
 					line(mlx, &point, 0x88ffff);
 				else
 					line(mlx, &point, 0xff0000);
@@ -60,7 +61,7 @@ void	fdf(t_mlx *mlx)
 				point.x1 = (coef2 * (j + 1)) + 300;
 				point.z1 = (15 * mlx->board[i][j + 1]);
 				iso(&point.x1, &point.y1, point.z1);
-				if (point.z == 0 && point.z1 == 0)	
+				if (point.z == 0 && point.z1 == 0)
 					line(mlx, &point, 0x00ff00);
 				else if (point.z == point.z1)
 					line(mlx, &point, 0x88ffff);
@@ -91,8 +92,8 @@ void	launch_graphic(int **board, int line, int col)
 
 int		main(int argc, char **argv)
 {
-	int fd;
-	int **board;
+	int		fd;
+	int		**board;
 	t_check	check;
 
 	check.check = 1;
@@ -102,7 +103,7 @@ int		main(int argc, char **argv)
 	board = parsing(fd, argv, &check);
 	if (check.check == -1)
 	{
-		write (1, "parsing failed : file is not same number of collumns", 52);
+		write(1, "parsing failed : file is not same number of collumns", 52);
 		return (-1);
 	}
 	launch_graphic(board, check.line, check.col);
