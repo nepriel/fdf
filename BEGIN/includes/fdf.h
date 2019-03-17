@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vlhomme <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/12 15:59:55 by vlhomme           #+#    #+#             */
-/*   Updated: 2019/03/15 19:43:08 by vlhomme          ###   ########.fr       */
+/*   Created: 2019/03/17 12:06:51 by vlhomme           #+#    #+#             */
+/*   Updated: 2019/03/17 14:22:06 by vlhomme          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,13 @@
 # define LARGEUR 500
 # define HAUTEUR 500
 
-#include "../libft/libft.h"
-#include <sys/types.h>
-#include <fcntl.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <mlx.h>
-#include <math.h>
-
+# include "../libft/libft.h"
+# include <sys/types.h>
+# include <fcntl.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <mlx.h>
+# include <math.h>
 
 typedef	struct		s_check
 {
@@ -70,6 +69,7 @@ typedef struct		s_ptbres
 	int				yincr;
 }					t_ptbrese;
 
+void				ft_key_hook(int keycode, void *param);
 int					**creat_tab(int count_lines);
 int					*put_eachvalue_intab(char **eachvalue, t_check *check);
 int					countcol(char **eachvalue);
@@ -77,11 +77,8 @@ int					ft_count_lines(int fd, char **argv);
 int					**parsing(int fd, char **argv, t_check *check);
 int					end_by_fdftest(char *s);
 int					basic_check(int argc, char **argv);
-//void				Dxbigger(void *mlx_ptr, void *win_ptr, int couleur, int x, int y, int Dx, int Dy, int xincr, int yincr);
-//void				Dxsmaller(void *mlx_ptr, void *win_ptr, int x, int y, int Dx, int Dy, int xincr, int yincr);
-//void				Line(void *mlx_ptr, void *win_ptr, int x1, int y1, int x2, int y2, int couleur);
-void				Dxsmaller(t_mlx *mlx, int couleur, t_ptbrese *pt_brese);
-void				Dxbigger(t_mlx *mlx, int couleur, t_ptbrese *pt_brese);
-void				Line(t_mlx *mlx, int x1, int y1, int x2, int y2, int couleur);
+void				dxsmaller(t_mlx *mlx, int couleur, t_ptbrese *pt_brese);
+void				dxbigger(t_mlx *mlx, int couleur, t_ptbrese *pt_brese);
+void				line(t_mlx *mlx, t_point *t_point, int couleur);
 
 #endif

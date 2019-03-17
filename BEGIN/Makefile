@@ -11,6 +11,7 @@ SRC_NAME =	main.c					\
 			parsing.c				\
 			alloc.c					\
 			check.c					\
+			ft_key_hook.c
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
 
@@ -24,7 +25,7 @@ LFT = -lft
 
 CC = gcc $(CFLAGS)
 
-CFLAGS = -Wall -Wextra -Werror #-ggdb -fsanitize=address -fno-omit-frame-pointer
+CFLAGS = -Wall -Wextra -Werror #-ggdb -fsanitize=address,undefined -fno-omit-frame-pointer
 
 MLX = -lmlx -framework OpenGL -framework AppKit
 

@@ -6,7 +6,7 @@
 /*   By: vlhomme <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/15 10:46:04 by vlhomme           #+#    #+#             */
-/*   Updated: 2019/03/15 19:43:01 by vlhomme          ###   ########.fr       */
+/*   Updated: 2019/03/17 14:21:32 by vlhomme          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,21 +51,21 @@ void	fdf(t_mlx *mlx)
 				point.z1 = (15 * mlx->board[i + 1][j]);
 				iso(&point.x1, &point.y1, point.z1);
 				if (point.z == 0 && point.z1 == 0)
-					Line(mlx, point.x, point.y, point.x1, point.y1, 0x00ff00);
+					line(mlx, &point, 0x00ff00);
 				else if ( point.z == point.z1)
-					Line(mlx, point.x, point.y, point.x1, point.y1, 0x88ffff);
+					line(mlx, &point, 0x88ffff);
 				else
-					Line(mlx, point.x, point.y, point.x1, point.y1, 0xff0000);
-				point.y2 = (coef1 * i) + 125;
-				point.x2 = (coef2 * (j + 1)) + 300;
-				point.z2 = (15 * mlx->board[i][j + 1]);
-				iso(&point.x2, &point.y2, point.z2);
-				if (point.z == 0 && point.z2 == 0)	
-					Line(mlx, point.x, point.y, point.x2, point.y2, 0x00ff00);
-				else if (point.z == point.z2)
-					Line(mlx, point.x, point.y, point.x2, point.y2, 0x88ffff);
+					line(mlx, &point, 0xff0000);
+				point.y1 = (coef1 * i) + 125;
+				point.x1 = (coef2 * (j + 1)) + 300;
+				point.z1 = (15 * mlx->board[i][j + 1]);
+				iso(&point.x1, &point.y1, point.z1);
+				if (point.z == 0 && point.z1 == 0)	
+					line(mlx, &point, 0x00ff00);
+				else if (point.z == point.z1)
+					line(mlx, &point, 0x88ffff);
 				else
-					Line(mlx, point.x, point.y, point.x2, point.y2, 0xffff00);
+					line(mlx, &point, 0xffff00);
 				//mlx_pixel_put(mlx_ptr, win_ptr, x1, y1, 0xffffff);
 			}
 			//mlx_pixel_put(mlx_ptr, win_ptr, x, y, 0xffffff);
@@ -88,6 +88,7 @@ void	launch_graphic(int **board, int line, int col)
 	mlx.mlx_ptr = mlx_init();
 	mlx.win_ptr = mlx_new_window(mlx.mlx_ptr, LARGEUR, HAUTEUR, "SALUT");
 	fdf(&mlx);
+	mlx_key_hook(mlx.win_ptr, ft_key_hook, (void *)0);
 	mlx_loop(mlx.mlx_ptr);
 }
 
