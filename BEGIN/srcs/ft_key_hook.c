@@ -6,15 +6,16 @@
 /*   By: vlhomme <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/17 12:26:06 by vlhomme           #+#    #+#             */
-/*   Updated: 2019/03/17 14:25:31 by vlhomme          ###   ########.fr       */
+/*   Updated: 2019/03/17 15:43:29 by vlhomme          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	ft_key_hook(int keycode, void *param)
+int		ft_key_hook(int keycode, void *param)
 {
 	(void)param;
 	if (keycode == 53)
 		exit(0);
+	return (0);
 }

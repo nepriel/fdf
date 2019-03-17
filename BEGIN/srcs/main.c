@@ -6,7 +6,7 @@
 /*   By: vlhomme <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/15 10:46:04 by vlhomme           #+#    #+#             */
-/*   Updated: 2019/03/17 14:21:32 by vlhomme          ###   ########.fr       */
+/*   Updated: 2019/03/17 15:43:47 by vlhomme          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,14 +66,11 @@ void	fdf(t_mlx *mlx)
 					line(mlx, &point, 0x88ffff);
 				else
 					line(mlx, &point, 0xffff00);
-				//mlx_pixel_put(mlx_ptr, win_ptr, x1, y1, 0xffffff);
 			}
-			//mlx_pixel_put(mlx_ptr, win_ptr, x, y, 0xffffff);
 			j++;
 		}
 		i++;
 	}
-	//Line(mlx_ptr, win_ptr, 0, 0, 500, 500, 0x00ff00);
 }
 
 void	launch_graphic(int **board, int line, int col)

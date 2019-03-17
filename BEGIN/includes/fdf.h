@@ -6,7 +6,7 @@
 /*   By: vlhomme <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/17 12:06:51 by vlhomme           #+#    #+#             */
-/*   Updated: 2019/03/17 14:22:06 by vlhomme          ###   ########.fr       */
+/*   Updated: 2019/03/17 15:42:14 by vlhomme          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ typedef struct		s_ptbres
 	int				yincr;
 }					t_ptbrese;
 
-void				ft_key_hook(int keycode, void *param);
+int					ft_key_hook(int keycode, void *param);
 int					**creat_tab(int count_lines);
 int					*put_eachvalue_intab(char **eachvalue, t_check *check);
 int					countcol(char **eachvalue);
