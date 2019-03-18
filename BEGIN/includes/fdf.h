@@ -6,7 +6,7 @@
 /*   By: vlhomme <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/18 07:04:07 by vlhomme           #+#    #+#             */
-/*   Updated: 2019/03/18 07:13:45 by vlhomme          ###   ########.fr       */
+/*   Updated: 2019/03/18 23:13:44 by vlhomme          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,16 @@ void	dxsmaller(t_mlx *mlx, int couleur, t_ptbrese *pt_brese);
 void	dxbigger(t_mlx *mlx, int couleur, t_ptbrese *pt_brese);
 void	line(t_mlx *mlx, t_point *point, int couleur);
 
-int		ft_key_hook(int keycode, void *param);
+int		ft_key_hook(int keycode, t_mlx *mlx);
 
 void	iso(int *x, int *y, int z);
 void	get_x_y(t_mlx *mlx, t_point *point, t_truc *coefij);
 void	get_nextx(t_mlx *mlx, t_point *point, t_truc *coefij);
 void	get_nexty(t_mlx *mlx, t_point *point, t_truc *coefij);
+
+void	proj2(int *x, int *y, int z);
+void	get_x_y2(t_mlx *mlx, t_point *point, t_truc *coefij);
+void	get_nextx2(t_mlx *mlx, t_point *point, t_truc *coefij);
+void	get_nexty2(t_mlx *mlx, t_point *point, t_truc *coefij);
 
 #endif

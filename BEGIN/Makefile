@@ -7,6 +7,7 @@ OBJ_PATH = ./objs/
 CPPFLAGS = -I./includes/
 
 SRC_NAME =	main.c					\
+			proj2.c					\
 			ft_bresenhaim.c			\
 			parsing.c				\
 			alloc.c					\

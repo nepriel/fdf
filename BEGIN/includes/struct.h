@@ -6,7 +6,7 @@
 /*   By: vlhomme <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/18 06:58:14 by vlhomme           #+#    #+#             */
-/*   Updated: 2019/03/18 07:01:32 by vlhomme          ###   ########.fr       */
+/*   Updated: 2019/03/18 22:59:43 by vlhomme          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ typedef	struct		s_check
 
 typedef	struct		s_mlx
 {
+	int				proj;
+	int				yolo;
 	void			*mlx_ptr;
 	void			*win_ptr;
 	int				line;
