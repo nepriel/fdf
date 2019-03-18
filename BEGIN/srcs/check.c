@@ -6,7 +6,7 @@
 /*   By: vlhomme <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 10:55:09 by vlhomme           #+#    #+#             */
-/*   Updated: 2019/03/13 11:51:05 by vlhomme          ###   ########.fr       */
+/*   Updated: 2019/03/17 16:41:03 by vlhomme          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,6 @@ int	end_by_fdftest(char *s)
 	}
 	return (1);
 }
-
-/*
-	** WARNING WE DONT CHECK RECTANGLE
- */
 
 int	basic_check(int argc, char **argv)
 {

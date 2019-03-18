@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vlhomme <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/17 11:49:24 by vlhomme           #+#    #+#             */
-/*   Updated: 2019/03/17 11:49:25 by vlhomme          ###   ########.fr       */
+/*   Created: 2019/03/18 07:34:54 by vlhomme           #+#    #+#             */
+/*   Updated: 2019/03/18 07:34:55 by vlhomme          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,20 @@
 
 char	*ft_strsub(char const *s, unsigned int start, size_t len)
 {
-	unsigned int	i;
-	char			*sub;
+	char	*str;
+	int		i;
 
 	i = 0;
-	if (!s || !(sub = (char *)ft_memalloc(len + 1)))
+	if (!s)
 		return (NULL);
-	while (i < len)
+	if (!(str = ft_strnew(len)))
+		return (NULL);
+	while (s[start] != '\0' && len--)
 	{
-		sub[i] = s[start];
-		i++;
+		str[i] = s[start];
 		start++;
+		i++;
 	}
-	sub[i] = '\0';
-	return (sub);
+	str[i] = '\0';
+	return (str);
 }

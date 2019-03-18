@@ -19,15 +19,15 @@ void	dxsmaller(t_mlx *mlx, int couleur, t_ptbrese *pt_brese)
 
 	pt_brese->x = pt_brese->x1;
 	pt_brese->y = pt_brese->y1;
-	erreur = pt_brese->Dy / 2;
+	erreur = pt_brese->dy / 2;
 	i = 0;
-	while (i < pt_brese->Dy)
+	while (i < pt_brese->dy)
 	{
 		pt_brese->y += pt_brese->yincr;
-		erreur += pt_brese->Dx;
-		if (erreur > pt_brese->Dy)
+		erreur += pt_brese->dx;
+		if (erreur > pt_brese->dy)
 		{
-			erreur -= pt_brese->Dy;
+			erreur -= pt_brese->dy;
 			pt_brese->x += pt_brese->xincr;
 		}
 		mlx_pixel_put(mlx->mlx_ptr, mlx->win_ptr, \
@@ -43,15 +43,15 @@ void	dxbigger(t_mlx *mlx, int couleur, t_ptbrese *pt_brese)
 
 	pt_brese->x = pt_brese->x1;
 	pt_brese->y = pt_brese->y1;
-	erreur = pt_brese->Dx / 2;
+	erreur = pt_brese->dx / 2;
 	i = 0;
-	while (i < pt_brese->Dx)
+	while (i < pt_brese->dx)
 	{
 		pt_brese->x += pt_brese->xincr;
-		erreur += pt_brese->Dy;
-		if (erreur > pt_brese->Dx)
+		erreur += pt_brese->dy;
+		if (erreur > pt_brese->dx)
 		{
-			erreur -= pt_brese->Dx;
+			erreur -= pt_brese->dx;
 			pt_brese->y += pt_brese->yincr;
 		}
 		mlx_pixel_put(mlx->mlx_ptr, mlx->win_ptr, \
@@ -68,8 +68,8 @@ void	line(t_mlx *mlx, t_point *point, int couleur)
 	pt_brese.x2 = point->x1;
 	pt_brese.y1 = point->y;
 	pt_brese.y2 = point->y1;
-	pt_brese.Dx = abs(pt_brese.x2 - pt_brese.x1);
-	pt_brese.Dy = abs(pt_brese.y2 - pt_brese.y1);
+	pt_brese.dx = abs(pt_brese.x2 - pt_brese.x1);
+	pt_brese.dy = abs(pt_brese.y2 - pt_brese.y1);
 	if (pt_brese.x1 < pt_brese.x2)
 		pt_brese.xincr = 1;
 	else
@@ -78,7 +78,7 @@ void	line(t_mlx *mlx, t_point *point, int couleur)
 		pt_brese.yincr = 1;
 	else
 		pt_brese.yincr = -1;
-	if (pt_brese.Dx > pt_brese.Dy)
+	if (pt_brese.dx > pt_brese.dy)
 		dxbigger(mlx, couleur, &pt_brese);
 	else
 		dxsmaller(mlx, couleur, &pt_brese);

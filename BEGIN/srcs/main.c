@@ -6,73 +6,13 @@
 /*   By: vlhomme <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/15 10:46:04 by vlhomme           #+#    #+#             */
-/*   Updated: 2019/03/17 15:48:43 by vlhomme          ###   ########.fr       */
+/*   Updated: 2019/03/18 07:17:03 by vlhomme          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 #include <stdio.h>
 #include <stdlib.h>
-
-void	iso(int *x, int *y, int z)
-{
-	int previous_x;
-	int	previous_y;
-
-	previous_x = *x;
-	previous_y = *y;
-	*x = (previous_x - previous_y) * cos(0.523599);
-	*y = (previous_x + previous_y) * sin(0.523599) - z;
-}
-
-void	fdf(t_mlx *mlx)
-{
-	int		coef1;
-	int		coef2;
-	int		i;
-	int		j;
-	t_point	point;
-
-	coef1 = mlx->Largeur / (mlx->line * 2);
-	coef2 = mlx->Hauteur / (mlx->col * 2);
-	i = 0;
-	while (i < mlx->line)
-	{
-		j = 0;
-		while (j < mlx->col)
-		{
-			point.y = (coef1 * i) + 125;
-			point.x = (coef2 * j) + 300;
-			point.z = (15 * mlx->board[i][j]);
-			iso(&point.x, &point.y, point.z);
-			if (i < (mlx->line - 1) && j < (mlx->col - 1))
-			{
-				point.y1 = (coef1 * (i + 1)) + 125;
-				point.x1 = (coef2 * j) + 300;
-				point.z1 = (15 * mlx->board[i + 1][j]);
-				iso(&point.x1, &point.y1, point.z1);
-				if (point.z == 0 && point.z1 == 0)
-					line(mlx, &point, 0x00ff00);
-				else if (point.z == point.z1)
-					line(mlx, &point, 0x88ffff);
-				else
-					line(mlx, &point, 0xff0000);
-				point.y1 = (coef1 * i) + 125;
-				point.x1 = (coef2 * (j + 1)) + 300;
-				point.z1 = (15 * mlx->board[i][j + 1]);
-				iso(&point.x1, &point.y1, point.z1);
-				if (point.z == 0 && point.z1 == 0)
-					line(mlx, &point, 0x00ff00);
-				else if (point.z == point.z1)
-					line(mlx, &point, 0x88ffff);
-				else
-					line(mlx, &point, 0xffff00);
-			}
-			j++;
-		}
-		i++;
-	}
-}
 
 void	launch_graphic(int **board, int line, int col)
 {
@@ -81,10 +21,10 @@ void	launch_graphic(int **board, int line, int col)
 	mlx.line = line;
 	mlx.col = col;
 	mlx.board = board;
-	mlx.Hauteur = HAUTEUR;
-	mlx.Largeur = LARGEUR;
+	mlx.hauteur = 500;
+	mlx.largeur = 500;
 	mlx.mlx_ptr = mlx_init();
-	mlx.win_ptr = mlx_new_window(mlx.mlx_ptr, LARGEUR, HAUTEUR, "SALUT");
+	mlx.win_ptr = mlx_new_window(mlx.mlx_ptr, mlx.hauteur, mlx.largeur, "SALUT");
 	fdf(&mlx);
 	mlx_key_hook(mlx.win_ptr, ft_key_hook, (void *)0);
 	mlx_loop(mlx.mlx_ptr);

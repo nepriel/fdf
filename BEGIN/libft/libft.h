@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vlhomme  <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: vlhomme <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/09 16:44:20 by vlhomme           #+#    #+#             */
-/*   Updated: 2019/03/17 11:19:23 by vlhomme          ###   ########.fr       */
+/*   Created: 2019/03/18 05:50:50 by vlhomme           #+#    #+#             */
+/*   Updated: 2019/03/18 07:30:50 by vlhomme          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ typedef	struct		s_list
 	struct s_list	*next;
 }					t_list;
 
+size_t				ft_strlen_sep(char const *s, char c);
+int					ft_count_words_sep(char const *s, char c);
 int					get_next_line(const int fd, char **line);
 char				*ft_strndup(const char *s1, size_t n);
 void				*ft_memset(void *b, int c, size_t len);

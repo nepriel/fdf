@@ -1,30 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnew.c                                        :+:      :+:    :+:   */
+/*   ft_count_words_sep.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vlhomme <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/17 11:46:31 by vlhomme           #+#    #+#             */
-/*   Updated: 2019/03/18 07:29:46 by vlhomme          ###   ########.fr       */
+/*   Created: 2019/03/18 07:25:03 by vlhomme           #+#    #+#             */
+/*   Updated: 2019/03/18 07:25:04 by vlhomme          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnew(size_t size)
+int	ft_count_words_sep(char const *s, char c)
 {
-	char	*str;
-	size_t	i;
+	int	count;
+	int	sep;
 
-	i = 0;
-	if (!(str = (char *)malloc(sizeof(*str) * size + 1)))
-		return (NULL);
-	while (i < size)
+	sep = 0;
+	count = 0;
+	while (*s != '\0')
 	{
-		str[i] = '\0';
-		i++;
+		if (sep == 1 && *s == c)
+			sep = 0;
+		if (sep == 0 && *s != c)
+		{
+			sep = 1;
+			count++;
+		}
+		s++;
 	}
-	str[i] = '\0';
-	return (str);
+	return (count);
 }

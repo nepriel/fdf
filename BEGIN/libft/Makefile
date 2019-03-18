@@ -6,7 +6,7 @@
 #    By: vlhomme  <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/09 15:50:20 by vlhomme           #+#    #+#              #
-#    Updated: 2019/03/13 22:24:31 by vlhomme          ###   ########.fr        #
+#    Updated: 2019/03/18 07:31:51 by vlhomme          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,8 @@ OBJ_PATH := ./
 HDR_PATH := ./
 
 SRC = ft_atoi.c \
+	  ft_strlen_sep.c \
+	  ft_count_words_sep.c \
 	  ft_strndup.c \
 	  get_next_line.c \
 	  ft_bzero.c \
