@@ -6,7 +6,7 @@
 /*   By: vlhomme <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/18 07:04:07 by vlhomme           #+#    #+#             */
-/*   Updated: 2019/03/18 23:13:44 by vlhomme          ###   ########.fr       */
+/*   Updated: 2019/03/19 15:43:44 by vlhomme          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,7 @@
 # include <stdio.h>
 
 int		ft_count_lines(int fd, t_check *check);
-void	print_board_content(int **board, t_check *check);
-int		**parsing(int fd, char **argv, t_check *check);
+int		**parsing(int *j, int fd, char **argv, t_check *check);
 
 int		**creat_tab(t_check *check);
 

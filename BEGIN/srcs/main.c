@@ -6,18 +6,16 @@
 /*   By: vlhomme <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/15 10:46:04 by vlhomme           #+#    #+#             */
-/*   Updated: 2019/03/18 22:59:24 by vlhomme          ###   ########.fr       */
+/*   Updated: 2019/03/19 16:10:35 by vlhomme          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-#include <stdio.h>
-#include <stdlib.h>
 
 void	launch_graphic(int **board, int line, int col)
 {
 	t_mlx	mlx;
-	
+
 	mlx.yolo = 0;
 	mlx.proj = 0;
 	mlx.line = line;
@@ -26,7 +24,8 @@ void	launch_graphic(int **board, int line, int col)
 	mlx.hauteur = 500;
 	mlx.largeur = 500;
 	mlx.mlx_ptr = mlx_init();
-	mlx.win_ptr = mlx_new_window(mlx.mlx_ptr, mlx.hauteur, mlx.largeur, "SALUT");
+	mlx.win_ptr = mlx_new_window(mlx.mlx_ptr, \
+			mlx.hauteur, mlx.largeur, "SALUT");
 	fdf(&mlx);
 	mlx_key_hook(mlx.win_ptr, ft_key_hook, &mlx);
 	mlx_loop(mlx.mlx_ptr);
@@ -36,18 +35,15 @@ int		main(int argc, char **argv)
 {
 	int		fd;
 	int		**board;
+	int		j;
 	t_check	check;
 
+	j = 0;
 	check.check = 1;
 	if (basic_check(argc, argv) == -1)
 		return (-1);
 	fd = open(argv[1], O_RDONLY);
-	board = parsing(fd, argv, &check);
-	if (check.check == -1)
-	{
-		write(1, "parsing failed : file is not same number of collumns", 52);
-		return (-1);
-	}
+	board = parsing(&j, fd, argv, &check);
 	launch_graphic(board, check.line, check.col);
 	close(fd);
 }

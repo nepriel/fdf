@@ -28,7 +28,8 @@ LFT = -lft
 
 CC = gcc $(CFLAGS)
 
-CFLAGS = -Wall -Wextra -Werror -ggdb -fsanitize=address -fno-omit-frame-pointer
+CFLAGS = -Wall -Wextra -Werror
+#-ggdb -fsanitize=address -fno-omit-frame-pointer
 
 MLX = -lmlx -framework OpenGL -framework AppKit
 

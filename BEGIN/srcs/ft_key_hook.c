@@ -6,19 +6,19 @@
 /*   By: vlhomme <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/17 12:26:06 by vlhomme           #+#    #+#             */
-/*   Updated: 2019/03/18 23:32:59 by vlhomme          ###   ########.fr       */
+/*   Updated: 2019/03/19 16:22:42 by vlhomme          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static void	clean_window(t_mlx *mlx)
+static	void	clean_window(t_mlx *mlx)
 {
 	int i;
 	int j;
 
 	i = 0;
-	while(i < mlx->largeur)
+	while (i < mlx->largeur)
 	{
 		j = 0;
 		while (j < mlx->hauteur)
@@ -31,16 +31,15 @@ static void	clean_window(t_mlx *mlx)
 	}
 }
 
-static void	incr(int keycode, t_mlx *mlx)
+static	void	incr(int keycode, t_mlx *mlx)
 {
 	if (keycode == 69)
 		mlx->yolo++;
 	if (keycode == 78)
 		mlx->yolo--;
-	write(1, ft_itoa(mlx->yolo), 2);
 }
 
-static void	change_proj(t_mlx *mlx)
+static	void	change_proj(t_mlx *mlx)
 {
 	if (mlx->proj == 0)
 		mlx->proj = 1;
@@ -48,7 +47,7 @@ static void	change_proj(t_mlx *mlx)
 		mlx->proj = 0;
 }
 
-int		ft_key_hook(int keycode, t_mlx *mlx)
+int				ft_key_hook(int keycode, t_mlx *mlx)
 {
 	if (keycode == 53)
 		exit(0);
